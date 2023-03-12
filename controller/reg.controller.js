@@ -35,13 +35,13 @@ router.post("/played/:id", async (req, res) => {
   console.log("here 1");
 
   try {
-    const data1 = await Reg.findById(req.params.id);
+    let data1 = await Reg.findById(req.params.id);
     let totalgamesplayedis = data1.totalgamesplayed + 1;
-    const timec=req.query.time;
+    let timec=req.query.time;
     if(timec>data1.time){
       timec=data1.time
     }
-    const data = await Reg.findByIdAndUpdate(
+    let data = await Reg.findByIdAndUpdate(
       req.params.id,
       {
         time: timec,
